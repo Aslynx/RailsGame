@@ -1,0 +1,9 @@
+%h1 All Games
+
+.row
+  .col-md-offset-8
+    %ul.list-group
+      - @games.each do |game|
+        %li.list-group-item
+          = game.title
+          = game.description
