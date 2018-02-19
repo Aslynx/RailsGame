@@ -1,0 +1,10 @@
+%h3
+  = @game.title
+
+= link_to "edit", edit_game_path(@game)
+= link_to "delete", game_path(@game), method: :delete, data: {confirm: "Really delete the game?"}
+
+
+= @game.description
+
+= link_to "Back to Games List", games_path

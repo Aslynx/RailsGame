@@ -1,9 +1,9 @@
-%h1 All Games
+%h3 All Games
 
 .row
-  .col-md-offset-8
+  .col-md-6
     %ul.list-group
       - @games.each do |game|
         %li.list-group-item
-          = game.title
-          = game.description
+          = link_to game.title, game_path(game)
+    = link_to "Add a new game", new_game_path
