@@ -1,5 +1,6 @@
 RailsGame::Application.routes.draw do
   resources :games
+  resources :tournaments
 
-  root to: 'games#index'
+  root to: 'tournaments#index'
 end

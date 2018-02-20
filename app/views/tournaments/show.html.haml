@@ -1,0 +1,15 @@
+%h3
+  = @tournament.name
+
+= link_to "edit", edit_tournament_path(@tournament)
+= link_to "delete", tournament_path(@tournament), method: :delete, data: {confirm: "Really delete the tournament?"}
+
+.container
+  .row
+    = image_tag @tournament.poster.url
+  .row
+    = @tournament.description
+  .row
+    = @tournament.street + " " + @tournament.city + " " + @tournament.state + " " + @tournament.country
+
+= link_to "Back to Tournaments List", tournaments_path

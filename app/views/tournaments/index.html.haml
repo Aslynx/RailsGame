@@ -1,0 +1,9 @@
+%h3 All Tournaments
+
+.row
+  .col-md-6
+    %ul.list-group
+      - @tournaments.each do |tournament|
+        %li.list-group-item
+          = link_to tournament.name, tournament_path(tournament)
+    = link_to "Add a new tournament", new_tournament_path

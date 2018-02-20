@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180220110049) do
+ActiveRecord::Schema.define(:version => 20180220130133) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(:version => 20180220110049) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "tournaments", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "city"
+    t.string   "country"
+    t.integer  "max_players"
+    t.string   "poster_file_name"
+    t.integer  "poster_file_size"
+    t.string   "poster_content_type"
+    t.datetime "poster_updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "street"
+    t.string   "state"
   end
 
 end

@@ -1,0 +1,39 @@
+= form_for(@tournament, html: {multipart: true}) do |f|
+  %ul
+    - @tournament.errors.full_messages.each do |error|
+      %li= error
+  .form-group
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .form-group
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .form-group
+    = f.select :max_players, select_max_players_options
+  .form-group
+    = f.label :street
+    %br/
+    = f.text_field :street
+  .form-group
+    = f.label :city
+    %br/
+    = f.text_field :city
+  .form-group
+    = f.label :state
+    %br/
+    = f.text_field :state
+  .form-group
+    = f.label :country
+    %br/
+    = f.text_field :country
+  .form-group
+    - if @tournament.poster.exists?
+      = image_tag @tournament.poster.url
+      %br/
+    = f.label :poster, "Attach an Image"
+    %br/
+    = f.file_field :poster
+  %p
+    = f.submit
