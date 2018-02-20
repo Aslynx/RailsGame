@@ -4,7 +4,10 @@
 = link_to "edit", edit_game_path(@game)
 = link_to "delete", game_path(@game), method: :delete, data: {confirm: "Really delete the game?"}
 
-
-= @game.description
+.container
+  .row
+    = @game.description
+  .row
+    = @game.genre_string
 
 = link_to "Back to Games List", games_path

@@ -10,5 +10,7 @@
     = f.label :description
     %br/
     = f.text_area :description
+  .form-group
+    = f.select :genre, select_genre_options
   %p
     = f.submit

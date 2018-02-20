@@ -41,13 +41,13 @@ class GamesController < ApplicationController
     game_params_form
 
     flash.notice = "Game '#{@game.title}' Updated!"
-
   end
 
   private
     def game_params_form
       @game.title = params[:game][:title]
       @game.description = params[:game][:description]
+      @game.genre = params[:game][:genre]
 
       @game.save
 
