@@ -1,5 +1,8 @@
 class Game < ActiveRecord::Base
-  attr_accessible :title, :description, :genre
+  attr_accessible :title, :description, :genre, :image
+
+  has_attached_file :image
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   # All genres possible
   MOBA = 1.freeze
@@ -19,7 +22,7 @@ class Game < ActiveRecord::Base
     when Game::FPS
       "FPS"
     else
-      "FIGHTING"
+      "Fighting"
     end
   end
 

@@ -6,6 +6,8 @@
 
 .container
   .row
+    = image_tag @game.image.url
+  .row
     = @game.description
   .row
     = @game.genre_string

@@ -12,7 +12,6 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     @game.destroy
-    @game.save
 
     redirect_to games_path()
 
@@ -48,6 +47,7 @@ class GamesController < ApplicationController
       @game.title = params[:game][:title]
       @game.description = params[:game][:description]
       @game.genre = params[:game][:genre]
+      @game.image = params[:game][:image]
 
       @game.save
 
