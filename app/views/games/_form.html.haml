@@ -21,3 +21,8 @@
     = f.file_field :image
   %p
     = f.submit
+
+- if @game.id.nil?
+  = link_to "Back to Games", games_path()
+- else
+  = link_to "Back to Game", game_path(@game)

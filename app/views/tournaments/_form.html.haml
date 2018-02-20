@@ -37,3 +37,7 @@
     = f.file_field :poster
   %p
     = f.submit
+- if @tournament.id.nil?
+  = link_to "Back to Tournaments", tournaments_path()
+- else
+  = link_to "Back to Tournament", tournament_path(@tournament)
