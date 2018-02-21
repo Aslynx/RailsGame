@@ -1,4 +1,8 @@
 class Game < ActiveRecord::Base
+
+  has_many :games_tournaments
+  has_many :tournaments, through: :games_tournaments
+
   attr_accessible :title, :description, :genre, :image
 
   has_attached_file :image
@@ -24,6 +28,10 @@ class Game < ActiveRecord::Base
     else
       "Fighting"
     end
+  end
+
+  def to_s
+    title
   end
 
 end

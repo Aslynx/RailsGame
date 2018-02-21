@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180220130133) do
+ActiveRecord::Schema.define(:version => 20180220160112) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(:version => 20180220130133) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "games_tournaments", :id => false, :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "games_tournaments", ["game_id"], :name => "index_games_tournaments_on_game_id"
+  add_index "games_tournaments", ["tournament_id"], :name => "index_games_tournaments_on_tournament_id"
 
   create_table "tournaments", :force => true do |t|
     t.string   "name"

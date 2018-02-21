@@ -52,6 +52,7 @@ class TournamentsController < ApplicationController
       @tournament.country = params[:tournament][:country]
       @tournament.max_players = params[:tournament][:max_players]
       @tournament.poster = params[:tournament][:poster]
+      @tournament.game_list = params[:tournament][:game_list]
 
       @tournament.save
 

@@ -35,6 +35,10 @@
     = f.label :poster, "Attach an Image"
     %br/
     = f.file_field :poster
+  .form-group
+    = f.label :game_list
+    %br/
+    = f.select :game_list, options_for_select(select_games_options, selected: "1" ), {}, { :multiple => true }
   %p
     = f.submit
 - if @tournament.id.nil?
