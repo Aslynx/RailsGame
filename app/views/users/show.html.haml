@@ -1,0 +1,15 @@
+%h3
+  = @user.username
+
+= link_to "edit", edit_user_path(@user)
+= link_to "delete", user_path(@user), method: :delete, data: {confirm: "Really delete the user?"}
+
+.container
+  .row
+    - if @user.avatar.exists?
+      = image_tag @user.avatar.url
+  .row
+    = @user.street + " " + @user.city + " " + @user.state + " " + @user.country
+
+
+= link_to "Back to users List", users_path

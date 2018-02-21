@@ -6,10 +6,16 @@
 
 .container
   .row
-    = image_tag @tournament.poster.url
+    - if @tournament.poster.exists?
+      = image_tag @tournament.poster.url
   .row
     = @tournament.description
   .row
     = @tournament.street + " " + @tournament.city + " " + @tournament.state + " " + @tournament.country
+
+  .row
+    List of games :
+    - @tournament.games.each do |game|
+      = link_to game.title, game_path(game)
 
 = link_to "Back to Tournaments List", tournaments_path

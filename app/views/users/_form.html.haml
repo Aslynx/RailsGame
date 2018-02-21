@@ -1,0 +1,38 @@
+= form_for(@user, html: {multipart: true}) do |f|
+  %ul
+    - @user.errors.full_messages.each do |error|
+      %li= error
+  .form-group
+    = f.label :username
+    %br/
+    = f.text_field :username
+  .form-group
+    = f.label :street
+    %br/
+    = f.text_field :street
+  .form-group
+    = f.label :city
+    %br/
+    = f.text_field :city
+  .form-group
+    = f.label :state
+    %br/
+    = f.text_field :state
+  .form-group
+    = f.label :country
+    %br/
+    = f.text_field :country    
+  .form-group
+    - if @user.avatar.exists?
+      = image_tag @user.avatar.url
+      %br/
+    = f.label :avatar, "Attach an Image"
+    %br/
+    = f.file_field :avatar
+  %p
+    = f.submit
+
+- if @user.id.nil?
+  = link_to "Back to Users", users_path()
+- else
+  = link_to "Back to User", user_path(@user)

@@ -10,4 +10,8 @@ module TournamentsHelper
     ]
   end
 
+  def select_games_options
+    Game.all.collect {|g| [g.title, g.title]}
+  end
+
 end
