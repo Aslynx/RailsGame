@@ -10,6 +10,13 @@
       = image_tag @user.avatar.url
   .row
     = @user.street + " " + @user.city + " " + @user.state + " " + @user.country
-
+  .row
+    List of tournaments
+    - @user.tournaments.uniq.each do |t|
+      = link_to t.name, tournament_path(t)
+  .row
+    List of games
+    - @user.games.uniq.each do |g|
+      = link_to g.title, game_path(g)
 
 = link_to "Back to users List", users_path

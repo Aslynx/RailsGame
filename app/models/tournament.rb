@@ -1,6 +1,8 @@
 class Tournament < ActiveRecord::Base
   has_many :games_tournaments
   has_many :games, through: :games_tournaments
+  has_many :participations, through: :games_tournaments
+  has_many :users, through: :participations
 
   has_attached_file :poster
   validates_attachment_content_type :poster, :content_type => ["image/jpg", "image/jpeg", "image/png"]
