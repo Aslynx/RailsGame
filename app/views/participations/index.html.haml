@@ -1,0 +1,14 @@
+%h3 All Participations
+
+.row
+    .col-md-6
+        - @tournaments.each do |tournament|
+            = link_to tournament.name, tournament_path(tournament)
+            - tournament.games.each do |game|
+                %li.list-group-item
+                    .row
+                        .col-md-6
+                            = link_to game.title, game_path(game)
+                        .col-md-6
+                            = link_to "Inscription", new_participation_path(:game => game, :tournament => tournament)
+                    

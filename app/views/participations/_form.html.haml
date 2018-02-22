@@ -1,0 +1,18 @@
+= form_for(@participation) do |f|
+    %ul
+        - @participation.errors.full_messages.each do |error|
+            %li= error
+    .form-group
+        = f.label :tournament
+        %br/
+        = f.text_field :tournament, :value => @tournament.id, :readonly => true
+    .form-group
+        = f.label :game
+        %br/
+        = f.text_field :game, :value => @game.id, :readonly => true
+    .form-group
+        = f.label :user
+        %br/
+        = f.select :user, options_for_select(select_player_form)
+    .form-group
+        = f.submit
