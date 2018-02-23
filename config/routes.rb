@@ -1,4 +1,5 @@
 RailsGame::Application.routes.draw do
+  resources :dashboard
   resources :games
   resources :tournaments do
     get '/simulate' => 'tournaments#simulate'
@@ -8,5 +9,5 @@ RailsGame::Application.routes.draw do
 
   get '/rankings' => 'users#ranking'
 
-  root to: 'tournaments#index'
+  root to: 'dashboard#index'
 end

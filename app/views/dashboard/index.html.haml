@@ -1,0 +1,20 @@
+%h1{style:"text-align:center"} Dashboard
+.row{style:"text-align:center"}
+    .col-md-4
+        %h4 Tournaments
+        %ul.list-group
+            - @tournaments.each do |t|
+                %li.list-group-item
+                    = t.name
+    .col-md-4
+        %h4 Games
+        %ul.list-group
+            - @games.each do |g|
+                %li.list-group-item
+                    = g.title
+    .col-md-4
+        %h4 Games
+        %ul.list-group
+            - @users.each do |u|
+                %li.list-group-item
+                    = u.username
