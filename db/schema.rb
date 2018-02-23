@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180222122725) do
+ActiveRecord::Schema.define(:version => 20180223101947) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20180222122725) do
 
   add_index "games_tournaments", ["game_id"], :name => "index_games_tournaments_on_game_id"
   add_index "games_tournaments", ["tournament_id"], :name => "index_games_tournaments_on_tournament_id"
+
+  create_table "matches", :force => true do |t|
+    t.integer  "participation_id"
+    t.integer  "participation2_id"
+    t.integer  "score_user1"
+    t.integer  "score_user2"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "matches", ["participation2_id"], :name => "index_matches_on_participation2_id"
+  add_index "matches", ["participation_id"], :name => "index_matches_on_participation_id"
 
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
@@ -67,15 +79,15 @@ ActiveRecord::Schema.define(:version => 20180222122725) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
-    t.integer  "nb_victories"
-    t.integer  "nb_defeats"
-    t.integer  "total_points"
+    t.integer  "nb_victories",        :default => 0
+    t.integer  "nb_defeats",          :default => 0
+    t.integer  "total_points",        :default => 0
     t.string   "avatar_file_name"
     t.integer  "avatar_file_size"
     t.string   "avatar_content_type"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end

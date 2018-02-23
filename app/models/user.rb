@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :participations
   has_many :games_tournaments, through: :participations
+  has_many :matchs, through: :participations
   has_many :games, through: :games_tournaments
   has_many :tournaments, through: :games_tournaments
 
@@ -13,9 +14,19 @@ class User < ActiveRecord::Base
     found_games_tournament = GamesTournament.where(game_id: game, tournament_id: tournament)
     puts found_games_tournament
     self.games_tournaments += found_games_tournament
-    found_game = Game.where(id: game)
-    #self.games += found_game
-    found_tournament = Tournament.where(name: tournament)
-    #self.tournaments += found_tournament
+  end
+
+  def add_score=(score)
+    case score
+    when Match::WIN
+      self.nb_victories += 1
+      self.total_points += score
+    when Match::DRAW
+      self.total_points += score
+    else
+      self.nb_defeats += 1
+    end
+
+    self.save
   end
 end

@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
   has_many :tournaments, through: :games_tournaments
   has_many :participations, through: :games_tournaments
   has_many :users, through: :participations
+  has_many :matchs, through: :participations
 
   attr_accessible :title, :description, :genre, :image
 

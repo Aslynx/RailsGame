@@ -18,5 +18,23 @@
     List of games
     - @user.games.uniq.each do |g|
       = link_to g.title, game_path(g)
+  .row
+    Statistics
+    .row
+      .col-md-4
+        %table.table
+          %thead
+            %tr
+              %th Victories
+              %th Defeats
+              %th Points
+          %tbody
+            %tr
+              %td
+                = @user.nb_victories
+              %td
+                = @user.nb_defeats
+              %td
+                = @user.total_points
 
 = link_to "Back to users List", users_path
