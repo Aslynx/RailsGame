@@ -29,6 +29,12 @@ class UsersController < ApplicationController
     def new
       @user = User.new
     end
+
+    def ranking
+      @victories = User.order('nb_victories desc').all
+      @defeats = User.order('nb_defeats desc').all
+      @points = User.order('total_points desc').all
+    end
   
     def show
       @user = User.find(params[:id])

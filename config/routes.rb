@@ -6,5 +6,7 @@ RailsGame::Application.routes.draw do
   resources :users
   resources :participations
 
+  get '/rankings' => 'users#ranking'
+
   root to: 'tournaments#index'
 end

@@ -1,0 +1,47 @@
+%h3 Rankings
+.row
+	.col-md-3
+		Victories :
+		%table.table
+			%thead
+				%tr
+					%th Name
+					%th Victories
+			%tbody
+				- @victories.each do |user|
+					%tr
+						%td
+							= user.username
+						%td
+							= user.nb_victories
+						%td
+	.col-md-3						
+		Defeats :
+		%table.table
+			%thead
+				%tr
+					%th Name
+					%th Defeats
+			%tbody
+				- @defeats.each do |user|
+					%tr
+						%td
+							= user.username
+						%td
+							= user.nb_defeats
+						%td
+	.col-md-3					
+		Total Points :
+		%table.table
+			%thead
+				%tr
+					%th Name
+					%th Points
+			%tbody
+				- @points.each do |user|
+					%tr
+						%td
+							= user.username
+						%td
+							= user.total_points
+						%td						
