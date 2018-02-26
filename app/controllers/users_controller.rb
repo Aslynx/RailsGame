@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
   
     def index
-      @users = User.all
+      @users = User.order('username asc').all
     end
   
     def new
