@@ -34,4 +34,15 @@ RailsGame::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+        address: ENV['DEVISE_ADDRESS'],
+        port: ENV['DEVISE_PORT'],
+        authentication: "plain",
+        enable_starttls_auto: true,
+        user_name: ENV['DEVISE_MAIL'],
+        password: ENV['DEVISE_MAIL_PASSWORD']
+    }
 end
