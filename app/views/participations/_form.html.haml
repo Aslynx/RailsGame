@@ -5,11 +5,13 @@
     .form-group
         = f.label :tournament
         %br/
-        = f.text_field :tournament, :value => @tournament.id, :readonly => true
+        = @tournament.name
+        = f.hidden_field :tournament, :value => @tournament.id, :readonly => true
     .form-group
         = f.label :game
         %br/
-        = f.text_field :game, :value => @game.id, :readonly => true
+        = @game.title
+        = f.hidden_field :game, :value => @game.id, :readonly => true
     .form-group
         = f.label :user
         %br/

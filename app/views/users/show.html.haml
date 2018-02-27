@@ -1,40 +1,83 @@
-%h3
-  = @user.username
-
-= link_to "edit", edit_user_path(@user)
-= link_to "delete", user_path(@user), method: :delete, data: {confirm: "Really delete the user?"}
-
 .container
+  %h1{style:"text-align:center"}
+    Profile of
+    = @user.username
+
+  .row
+    .col-lg-4
+    .col-lg-4
+      .btn-group.btn-group-justified{style:"text-align:center"}
+        = link_to "edit", edit_user_path(@user), class: 'btn btn-link'
+        = link_to "delete", user_path(@user), method: :delete, data: {confirm: "Really delete the user?"}, class: 'btn btn-link'
+        = link_to "Back to Users", users_path, class: 'btn btn-link'
+  %hr
   .row
     - if @user.avatar.exists?
-      = image_tag @user.avatar.url
-  .row
-    = @user.street + " " + @user.city + " " + @user.state + " " + @user.country
-  .row
-    List of tournaments
-    - @user.tournaments.uniq.each do |t|
-      = link_to t.name, tournament_path(t)
-  .row
-    List of games
-    - @user.games.uniq.each do |g|
-      = link_to g.title, game_path(g)
-  .row
-    Statistics
-    .row
-      .col-md-4
-        %table.table
-          %thead
-            %tr
-              %th Victories
-              %th Defeats
-              %th Points
-          %tbody
-            %tr
-              %td
-                = @user.nb_victories
-              %td
-                = @user.nb_defeats
-              %td
-                = @user.total_points
+      .col-md-6
+        = image_tag @user.avatar.url
+      .col-md-6
+        .well
+          %h3 Personal Information
+          %p 
+            %strong Street :
+            = @user.street 
+          %p
+            %strong City : 
+            = @user.city
+          %p
+            %strong State :
+            = @user.state
+          %p
+            %strong Country :
+            = @user.country
+          %h3 Statistics
+          %p
+            %strong Number of victories :
+            = @user.nb_victories
+          %p
+            %strong Number of defeats :
+            = @user.nb_defeats
+          %p
+            %strong Total points :
+            = @user.total_points
+    - else
+      .col-md-3
+      .col-md-6
+        .well
+          %h3 Personal Information
+          %p 
+            %strong Street :
+            = @user.street 
+          %p
+            %strong City : 
+            = @user.city
+          %p
+            %strong State :
+            = @user.state
+          %p
+            %strong Country :
+            = @user.country
+          %h3 Statistics
+          %p
+            %strong Number of victories :
+            = @user.nb_victories
+          %p
+            %strong Number of defeats :
+            = @user.nb_defeats
+          %p
+            %strong Total points :
+            = @user.total_points
+  .row.well
+    .col-md-6
+      %h3 List of participating tournaments
+      %lu.list-group
+        - @user.tournaments.uniq.each do |t|
+          %li.list-group-item
+            = link_to t.name, tournament_path(t)
+    .col-md-6  
+      %h3 List of games played
+      %lu.list-group
+        - @user.games.uniq.each do |g|
+          %li.list-group-item
+            = link_to g.title, game_path(g)
 
-= link_to "Back to users List", users_path
