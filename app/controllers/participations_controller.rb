@@ -17,6 +17,7 @@ class ParticipationsController < ApplicationController
 
         @tournament = Tournament.find(params[:tournament])
         @game = Game.find(params[:game])
+        @user = User.find(params[:user])
     end
 
     private 

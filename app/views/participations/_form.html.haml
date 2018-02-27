@@ -15,6 +15,7 @@
     .form-group
         = f.label :user
         %br/
-        = f.select :user, options_for_select(select_player_form)
+        = @user.email
+        = f.hidden_field :user, :value => @user.id, :readonly => true
     .form-group
         = f.submit

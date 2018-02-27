@@ -35,17 +35,17 @@
               %li
                 %a{href: rankings_path} Statistics
             %ul.nav.navbar-nav.navbar-right
-              %li
-                %a{href: "#"} Login    
+              - if !user_signed_in?
+                %li
+                  %a{href: new_user_session_path} Login 
+              - else
+                %li
+                  %a{href: user_path(current_user)} Profile 
+                %li
+                  = link_to "Logout", destroy_user_session_path(), method: :delete
       .container
-        
-        -#= link_to "Tournaments", tournaments_path()
-          = link_to "Games", games_path()
-          = link_to "Users", users_path()
-          = link_to "Participations", participations_path()
-          = link_to "Rankings", rankings_path()
         - flash.each do |key, value|
-          %div{class: "alert alert-#{key} alert-dismissable"}
+          %div{class: "alert alert-info alert-dismissable"}
             %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
             = value
         = yield
