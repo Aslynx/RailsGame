@@ -36,6 +36,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'cancancan', '~> 1.10'
+
 gem 'mailcatcher'
 
 # To use ActiveModel has_secure_password
