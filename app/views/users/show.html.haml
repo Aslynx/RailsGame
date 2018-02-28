@@ -3,18 +3,14 @@
     Profile of
     = @user.username
 
-  - if can? :update, @user
-    .row
-      .col-lg-4
-      .col-lg-4
-        .btn-group.btn-group-justified{style:"text-align:center"}
+  .row
+    .col-lg-4
+    .col-lg-4
+      .btn-group.btn-group-justified{style:"text-align:center"}
+        - if can? :update, @user
           = link_to "edit", edit_user_path(@user), class: 'btn btn-link'
+        - if can? :destroy, @user
           = link_to "delete", user_path(@user), method: :delete, data: {confirm: "Really delete the user?"}, class: 'btn btn-link'
-          = link_to "Back to Users", users_path, class: 'btn btn-link'
-  - else
-    .row
-      .col-lg-4
-      .col-lg-4{style:"text-align:center"}
         = link_to "Back to Users", users_path, class: 'btn btn-link'
   %hr
   .row

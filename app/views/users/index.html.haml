@@ -16,7 +16,7 @@
 							.col-md-3
 								.btn-group
 									.btn-group
-										- if can? :manage, User
+										- if can? :create, User
 											%a.btn.btn-default.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", href: "#"}
 												Actions	
 												%span.caret

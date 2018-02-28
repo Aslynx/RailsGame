@@ -31,7 +31,8 @@
               %li
                 %a{href: users_path} Users
               %li
-                %a{href: participations_path} Participations
+                - if can? :create, Participation
+                  %a{href: participations_path} Participations
               %li
                 %a{href: rankings_path} Statistics
             %ul.nav.navbar-nav.navbar-right

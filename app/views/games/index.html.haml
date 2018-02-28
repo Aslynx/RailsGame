@@ -6,4 +6,5 @@
       - @games.each do |game|
         %li.list-group-item
           = link_to game.title, game_path(game)
+  - if can? :create, Game        
     = link_to "Add a new game", new_game_path

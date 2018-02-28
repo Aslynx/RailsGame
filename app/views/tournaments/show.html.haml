@@ -1,9 +1,9 @@
 %h3
   = @tournament.name
-
-= link_to "edit", edit_tournament_path(@tournament)
-= link_to "delete", tournament_path(@tournament), method: :delete, data: {confirm: "Really delete the tournament?"}
-= link_to "simulate", tournament_simulate_path(@tournament) 
+- if can? :manage, Tournament
+  = link_to "edit", edit_tournament_path(@tournament)
+  = link_to "delete", tournament_path(@tournament), method: :delete, data: {confirm: "Really delete the tournament?"}
+  = link_to "simulate", tournament_simulate_path(@tournament) 
 
 .container
   .row
