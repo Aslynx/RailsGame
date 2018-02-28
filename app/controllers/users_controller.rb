@@ -38,6 +38,19 @@ class UsersController < ApplicationController
   
     def show
       @user = User.find(params[:id])
+
+      puts "====================================="
+      puts @user.latitude
+      puts @user.longitude
+
+      @tournaments = Tournament.near(@user.geocode, 50)
+
+      puts @tournaments
+
+      @tournaments.each do |t|
+        puts t.name 
+      end
+
     end
   
     def update

@@ -61,6 +61,7 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.21-x64-mingw32)
+    geocoder (1.4.5)
     haml (4.0.7)
       tilt
     haml-rails (0.4)
@@ -197,6 +198,7 @@ DEPENDENCIES
   devise
   dotenv
   dotenv-rails
+  geocoder
   haml
   haml-rails (~> 0.4.0)
   jquery-rails

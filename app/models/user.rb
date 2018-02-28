@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :street, :city, :state, :country, :nb_victories, :nb_defeats, :total_points, :avatar, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :street, :city, :state, :country, :nb_victories, :nb_defeats, :total_points, :avatar, :email, :password, :password_confirmation, :remember_me, :address
 
   has_attached_file :avatar
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png"]
@@ -17,11 +17,8 @@ class User < ActiveRecord::Base
   has_many :games, through: :games_tournaments
   has_many :tournaments, through: :games_tournaments
 
-  def inscription(game, tournament)
-    found_games_tournament = GamesTournament.where(game_id: game, tournament_id: tournament)
-    puts found_games_tournament
-    self.games_tournaments += found_games_tournament
-  end
+  geocoded_by :address   # can also be an IP address
+  after_validation :geocode       # auto-fetch coordinates
 
   def add_score=(score)
     case score
@@ -35,6 +32,16 @@ class User < ActiveRecord::Base
     end
 
     self.save
+  end
+
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
+
+  def inscription(game, tournament)
+    found_games_tournament = GamesTournament.where(game_id: game, tournament_id: tournament)
+    puts found_games_tournament
+    self.games_tournaments += found_games_tournament
   end
   
   def self.from_omniauth(auth)

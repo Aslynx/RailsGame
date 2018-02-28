@@ -69,6 +69,13 @@
           %p
             %strong Total points :
             = @user.total_points
+          %p
+            %strong Nearby Tournaments :
+            %lu.list-group
+              - for location in @tournaments
+                %li
+                  = link_to location.address, location
+                  (#{location.distance.to_f.round(2)} miles)
   .row.well
     .col-md-6
       %h3 List of participating tournaments

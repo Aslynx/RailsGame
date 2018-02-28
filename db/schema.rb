@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180227153023) do
+ActiveRecord::Schema.define(:version => 20180228112540) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20180227153023) do
     t.datetime "poster_updated_at"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", :force => true do |t|
@@ -104,6 +106,8 @@ ActiveRecord::Schema.define(:version => 20180227153023) do
     t.string   "provider"
     t.string   "uid"
     t.boolean  "admin",                  :default => false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
