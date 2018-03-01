@@ -74,7 +74,7 @@
             %lu.list-group
               - for location in @tournaments
                 %li
-                  = link_to location.address, location
+                  = link_to location.name, location
                   (#{location.distance.to_f.round(2)} miles)
   .row.well
     .col-md-6

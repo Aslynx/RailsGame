@@ -44,4 +44,8 @@
               %td
                 = link_to m.participation2.user.username, user_path(m.participation2.user)
 
+  .row
+    Map :
+    %br/
+    = image_tag "https://maps.googleapis.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@tournament.latitude}%2C#{@tournament.longitude}&key=AIzaSyB7khglydrnFFiSMwhDwCYX6u6x0_rkL1I"
 = link_to "Back to Tournaments List", tournaments_path
