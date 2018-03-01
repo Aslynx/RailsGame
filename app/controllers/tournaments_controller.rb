@@ -5,6 +5,10 @@ class TournamentsController < ApplicationController
 
     tournament_params_form
 
+    User.all.each do |user|
+      NotificationMailer.new_tournament_mail(user, @tournament).deliver
+    end 
+
     flash.notice = "Tournament '#{@tournament.name}' Created!"
   end
 
@@ -52,15 +56,26 @@ class TournamentsController < ApplicationController
         @match.save
         
       end
+      
     end
     
     flash.notice = "#{@tournament.name} has been simulated!"
+
+    @tournament.participations.each do |user|
+      @gt = GamesTournament.find(user.games_tournament_id)
+      @game = Game.find(@gt.game_id)
+      @user = User.find(user.user_id)
+      NotificationMailer.simulate_tournament_mail(@user, @tournament, @game).deliver
+    end 
 
     redirect_to tournament_path(@tournament)
   end
 
   def show
     @tournament = Tournament.find(params[:id])
+
+    puts "====================="
+    puts @tournament.geocode
   end
 
   def update
