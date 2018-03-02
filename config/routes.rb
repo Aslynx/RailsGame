@@ -2,7 +2,9 @@ RailsGame::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", confirmations: 'confirmations' }
 
   resources :dashboard
-  resources :games
+  resources :games do
+    resources :ratings
+  end
   resources :tournaments do
     get '/simulate' => 'tournaments#simulate'
   end

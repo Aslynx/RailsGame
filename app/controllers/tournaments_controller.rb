@@ -76,6 +76,9 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
 
     @has_been_simulated = @tournament.matchs.empty?
+
+    puts "=================="
+    puts @tournament.geocode
   end
 
   def update

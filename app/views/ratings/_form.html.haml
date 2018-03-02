@@ -1,0 +1,9 @@
+%h3 Post a Rating
+
+= form_for [@game, @rating] do |f|
+  %p
+    = f.label :score
+    %br/
+    = f.select :score, select_ratings_options
+  %p
+    = f.submit 'Submit', id: "btn-rate"

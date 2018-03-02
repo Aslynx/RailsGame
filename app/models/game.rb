@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
   has_many :participations, through: :games_tournaments
   has_many :users, through: :participations
   has_many :matchs, through: :participations
+  has_many :ratings
 
   attr_accessible :title, :description, :genre, :image
 

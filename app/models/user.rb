@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
   has_many :matchs, through: :participations
   has_many :games, through: :games_tournaments
   has_many :tournaments, through: :games_tournaments
+  has_many :ratings
 
   geocoded_by :address   # can also be an IP address
-  after_validation :geocode, :if => :street_changed? || :city_changed? || :state_changed? || :country_changed?      # auto-fetch coordinates
+  after_validation :geocode     # auto-fetch coordinates
 
   def add_score=(score)
     case score

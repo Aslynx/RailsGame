@@ -32,6 +32,15 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+
+    @average = Rating.where(game_id: @game.id).average(:score)
+
+    @rating = Rating.new
+    @rating.game_id = @game.id
+    if (!current_user.nil?)
+      @rating.user_id = current_user.id    
+      @has_voted = Rating.where(game_id: @rating.game_id, user_id: @rating.user_id).count()
+    end
   end
 
   def update

@@ -16,6 +16,16 @@
     List of tournaments :
     - @game.tournaments.each do |tournament|
       = link_to tournament.name, tournament_path(tournament)
+  .row
+    %h3 Ratings
+    - if @game.ratings.empty?
+      Nobody voted yet
+    - else 
+      #average-result
+        = render partial: 'games/rating'
+
+    - if @has_voted == 0 && !current_user.nil?
+      = render partial: 'ratings/form'
   
 
 = link_to "Back to Games List", games_path

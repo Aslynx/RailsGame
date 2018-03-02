@@ -11,7 +11,7 @@ class Tournament < ActiveRecord::Base
   attr_accessible :name, :description, :street, :city, :state, :country, :max_players, :poster, :game_list
 
   geocoded_by :address   # can also be an IP address
-  after_validation :geocode, :if => :street_changed? || :city_changed? || :state_changed? || :country_changed?      # auto-fetch coordinates
+  after_validation :geocode      # auto-fetch coordinates
 
   def address
     [street, city, state, country].compact.join(', ')
