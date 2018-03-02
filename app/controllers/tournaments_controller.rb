@@ -53,29 +53,29 @@ class TournamentsController < ApplicationController
         @match.participation.user.add_score = @match.score_user1
         @match.participation2.user.add_score = @match.score_user2
 
-        @match.save
-        
-      end
-      
+        @match.save 
+      end     
     end
-    
-    flash.notice = "#{@tournament.name} has been simulated!"
 
     @tournament.participations.each do |user|
       @gt = GamesTournament.find(user.games_tournament_id)
       @game = Game.find(@gt.game_id)
       @user = User.find(user.user_id)
       NotificationMailer.simulate_tournament_mail(@user, @tournament, @game).deliver
+    end
+
+    respond_to do |simulate|
+      simulate.js {}
+      simulate.html {redirect_to tournament_path(@tournament), notice:'#{@tournament.name} has been simulated!'}
     end 
 
-    redirect_to tournament_path(@tournament)
+    
   end
 
   def show
     @tournament = Tournament.find(params[:id])
 
-    puts "====================="
-    puts @tournament.geocode
+    @has_been_simulated = @tournament.matchs.empty?
   end
 
   def update

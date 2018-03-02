@@ -3,7 +3,8 @@
 - if can? :manage, Tournament
   = link_to "edit", edit_tournament_path(@tournament)
   = link_to "delete", tournament_path(@tournament), method: :delete, data: {confirm: "Really delete the tournament?"}
-  = link_to "simulate", tournament_simulate_path(@tournament) 
+  - if @has_been_simulated
+    = link_to "simulate", tournament_simulate_path(@tournament), remote: true, id: "btn-simulate"
 
 .container
   .row
@@ -20,29 +21,9 @@
       = link_to game.title, game_path(game)
   .row
     .col-md-6
-      -# Affichage du tableau des matchs
-      List of matchs :
-      %table.table
-        %thead
-          %tr
-            %th #
-            %th Game
-            %th 1st Player
-            %th Score
-            %th 2nd Player
-        %tbody
-          - @tournament.matchs.each do |m|
-            %tr
-              %td
-                = m.id
-              %td
-                = link_to m.participation.games_tournament.game.title, game_path(m.participation.games_tournament.game)
-              %td
-                = link_to m.participation.user.username, user_path(m.participation.user)
-              %td 
-                = m.score_user1.to_s + " - " + m.score_user2.to_s
-              %td
-                = link_to m.participation2.user.username, user_path(m.participation2.user)
+      #matches-table
+        -# Affichage du tableau des matchs
+        = render partial: 'mtable'
 
   .row
     Map :

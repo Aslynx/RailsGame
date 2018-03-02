@@ -1,0 +1,22 @@
+List of matchs :
+%table.table#tab-matches
+  %thead
+    %tr
+      %th #
+      %th Game
+      %th 1st Player
+      %th Score
+      %th 2nd Player
+  %tbody
+    - @tournament.matchs.each do |m|
+      %tr
+        %td
+          = m.id
+        %td
+          = link_to m.participation.games_tournament.game.title, game_path(m.participation.games_tournament.game)
+        %td
+          = link_to m.participation.user.username, user_path(m.participation.user)
+        %td 
+          = m.score_user1.to_s + " - " + m.score_user2.to_s
+        %td
+          = link_to m.participation2.user.username, user_path(m.participation2.user)
