@@ -68,14 +68,13 @@ RailsGame::Application.configure do
   # TO CHANGE WHEN HEROKU IS CREATED
   config.action_mailer.default_url_options = { :host => 'myrailsgame.herokuapp.com' }
 #  config.action_mailer.default_url_options =   { :host => 'your_app.herokuapp.com' }
-#  config.action_mailer.delivery_method = :smtp
-#  config.action_mailer.smtp_settings = {
-#        address: "smtp.gmail.com",
-#        port: 587,
-#        authentication: "plain",
-#        enable_starttls_auto: true,
-#        user_name: "your_email@gmail.com",
-#        password: "your_password" 
-
-#    }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['MAILTRAP_USER'],
+    :password => ENV['MAILTRAP_PWD'],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
 end
