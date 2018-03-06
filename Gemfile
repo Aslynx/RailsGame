@@ -38,7 +38,7 @@ gem 'omniauth-facebook'
 
 gem 'cancancan', '~> 1.10'
 
-gem 'mailcatcher'
+#gem 'mailcatcher'
 
 gem 'geocoder'
 
