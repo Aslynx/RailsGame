@@ -66,6 +66,7 @@ RailsGame::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # TO CHANGE WHEN HEROKU IS CREATED
+  config.action_mailer.default_url_options = { :host => 'myrailsgame.herokuapp.com' }
 #  config.action_mailer.default_url_options =   { :host => 'your_app.herokuapp.com' }
 #  config.action_mailer.delivery_method = :smtp
 #  config.action_mailer.smtp_settings = {
