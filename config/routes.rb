@@ -11,6 +11,11 @@ RailsGame::Application.routes.draw do
   resources :users
   resources :participations
 
+  resources :notifications, only: [:index] do
+    post :mark_as_read, on: :collection
+    post :mark_as_read, on: :member
+  end 
+
   get '/rankings' => 'users#ranking'
 
   root to: 'dashboard#index'

@@ -40,10 +40,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
 
       puts "====================================="
-      puts @user.latitude
-      puts @user.longitude
+      puts @user.geocode
 
-      @tournaments = Tournament.near(@user.geocode, 50)
+      @tournaments = Tournament.near([@user.latitude, @user.longitude], 50)
 
       puts @tournaments
 

@@ -1,6 +1,6 @@
 %h3 Post a Rating
 
-= form_for [@game, @rating] do |f|
+= form_for [@game, @rating], remote: true do |f|
   %p
     = f.label :score
     %br/

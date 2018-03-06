@@ -79,6 +79,7 @@ class TournamentsController < ApplicationController
 
     puts "=================="
     puts @tournament.geocode
+
   end
 
   def update
@@ -102,6 +103,9 @@ class TournamentsController < ApplicationController
       @tournament.game_list = params[:tournament][:game_list]
 
       @tournament.save
+
+      
+      @tournament.create_notifications(current_user)
 
       redirect_to tournament_path(@tournament)
     end

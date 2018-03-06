@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :games, through: :games_tournaments
   has_many :tournaments, through: :games_tournaments
   has_many :ratings
+  has_many :notifications, foreign_key: :recipient_id
 
   geocoded_by :address   # can also be an IP address
   after_validation :geocode     # auto-fetch coordinates

@@ -15,9 +15,11 @@ class RatingsController < ApplicationController
 
         @rating.save
 
+        @average = @game.ratings.average(:score)
+
         respond_to do |create|
             create.js {}
-            create.html {redirect_to game_path(@game), notice:'You have voted for #{@game.title}'}
+            create.html {redirect_to game_path(@game), notice:'You have voted for ' +  @game.title}
         end 
 
     end
