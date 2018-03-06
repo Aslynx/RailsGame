@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.9'
+
 gem 'rails', '3.2.22'
 
 # Bundle edge Rails instead:
@@ -57,4 +59,3 @@ gem 'jbuilder'
 # To use debugger
 # gem 'debugger'
 
-ruby '2.1.9'
