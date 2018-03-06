@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
 
+    #Test
+
     can :read, :all    
     if !user.nil?  
       can :update, User, id: user.id 
