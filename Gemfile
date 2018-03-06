@@ -56,3 +56,5 @@ gem 'jbuilder'
 
 # To use debugger
 # gem 'debugger'
+
+ruby '2.1.9'
