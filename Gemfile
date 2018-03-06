@@ -56,7 +56,3 @@ gem 'jbuilder'
 
 # To use debugger
 # gem 'debugger'
-
-gem 'rails_12factor', group: :production
-
-ruby '2.1.9'
